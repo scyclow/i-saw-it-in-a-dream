@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>I Saw It In A Dream</title>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="HandheldFriendly" content="true">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta id="header-theme" name="theme-color" content="#000000">
+
+    <script src="./min.p5.js"></script>
+
+
+    <style type="text/css">
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: black;
+      }
+
+      canvas {
+        padding: 0;
+        margin: auto;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+      }
+    </style>
+
+    <script>
+      function genTokenData(projectNum) {
+        const tokenId = projectNum * 1000000 + Math.floor(Math.random() * 1000)
+        let hash = '0x'
+        for (let i = 0; i < 64; i++) {
+          hash += Math.floor(Math.random() * 16).toString(16)
+        }
+        return {
+          hash, tokenId
+        }
+      }
+
+      const tokenData = genTokenData(99)
+    </script>
+  </head>
+  <body></body>
+
+  <script src="./index.js"></script>
+
+</html>

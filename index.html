@@ -33,18 +33,49 @@
     </style>
 
     <script>
-      function genTokenData(projectNum) {
-        const tokenId = projectNum * 1000000 + Math.floor(Math.random() * 1000)
-        let hash = '0x'
-        for (let i = 0; i < 64; i++) {
-          hash += Math.floor(Math.random() * 16).toString(16)
-        }
-        return {
-          hash, tokenId
-        }
-      }
+/*
+What do you see when you close your eyes to go to sleep after staring at your computer screen?
+*/
 
-      const tokenData = genTokenData(99)
+
+function genTokenData(projectNum) {
+  const tokenId = projectNum * 1000000 + Math.floor(Math.random() * 1000)
+  let hash = '0x'
+  for (let i = 0; i < 64; i++) {
+    hash += Math.floor(Math.random() * 16).toString(16)
+  }
+  return { hash, tokenId }
+  return {
+      hash:"0x13a8556049efd48fc8e6b8ffbfc643596cf6f5ef81ddda20729a78c299eb12fd",
+      // hash:"0xdf4d78b862227ae6db43c66a5c79277d421b9ae69459be7dd8408db86db24716",
+      // hash:"0x02630802b8fda6a6781db1b253275b215cf4e79c6689678e3343237b3c055394",
+      // hash:"0x587efc3bfc24ad718402b4bc895ad10bfef45480cfb78128ced184f70cf5d3f8",
+      // hash:"0xda2939423c0ccc9096d8b4380fc0dad732feaf3571c41d0c1ba495de69abb0db",
+      // hash:"0xa15fb0ee0e8740c1d9f9183927d603e1d4120e2b9f8bb7b1dca4d5c969d7c590",
+      // hash:"0x2445b796a85dcde609c3af097cfdf06b77933288d5b78a2277842eaeb17778df",
+      // hash:"0xc19aaead306ef0fd7ce09c41773c65a9096ee0fe65dba70514c66823728f301b",
+      // hash:"0x473af36a86c90a3cdf034300156a5f476da3b33b6a9f73baa2c610e3ed34d838",
+      // hash:"0x1f6359768a0d4dc37415da135aa471afeec2b6d275918cd4afc340160dd00784",
+      // hash:"0x8ad917b89fa440b26d8dfd0f3b182dcf249b8207fb9876579c46e949088caeef",
+      // hash:"0xd4601112a70809a6e847ea6ffd46d553b01b37fd04185f21057ac67e24a8482f",
+      // hash:"0x16dd855dee009e3a6d9df60ed44bc049f011dd832ccbef3f85742c5db261b064",
+    tokenId
+  }
+}
+
+const tokenData = genTokenData(99)
+
+function keyPressed() {
+  if (keyCode === 83) {
+    saveCanvas(__canvas, 'mesh-' + tokenData.hash, 'jpg');
+  }
+}
+
+// let benne, roboto
+// function preload() {
+//   benne = loadFont('./Benne.otf');
+//   roboto = loadFont('./RobotoMono.ttf');
+// }
     </script>
   </head>
   <body></body>

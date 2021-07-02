@@ -14,10 +14,19 @@
 
 
     <style type="text/css">
+      @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+
       body {
         margin: 0;
         padding: 0;
         background-color: black;
+        font-family: Roboto Mono, monospace;
+        color: #ffffff;
+        text-shadow: 3px 3px 0 black;
+      }
+
+      a {
+        color: #ffffff;
       }
 
       canvas {
@@ -29,6 +38,28 @@
         bottom: 0;
         left: 0;
         right: 0;
+      }
+      h1 {
+        padding: 0 0.67em;
+      }
+      #overlay {
+        z-index: 2;
+        position: absolute;
+        display: flex;
+        width: 100vw;
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+      }
+
+      #overlay-content {
+        border: 1px solid black;
+        text-align: center;
+        background-color: rgba(0,0,0,0.3);
+      }
+
+      #timeLeft {
+        font-size: 2em;
       }
     </style>
 
@@ -46,7 +77,8 @@ function genTokenData(projectNum) {
   }
   return { hash, tokenId }
   return {
-      hash:"0x13a8556049efd48fc8e6b8ffbfc643596cf6f5ef81ddda20729a78c299eb12fd",
+      hash:"0x80bf69bfb66e8b686bb4bbaca1ad543f0d155c9c8438f6d5798f4e84f60a0dcb",
+      // hash:"0x13a8556049efd48fc8e6b8ffbfc643596cf6f5ef81ddda20729a78c299eb12fd",
       // hash:"0xdf4d78b862227ae6db43c66a5c79277d421b9ae69459be7dd8408db86db24716",
       // hash:"0x02630802b8fda6a6781db1b253275b215cf4e79c6689678e3343237b3c055394",
       // hash:"0x587efc3bfc24ad718402b4bc895ad10bfef45480cfb78128ced184f70cf5d3f8",
@@ -78,8 +110,48 @@ function keyPressed() {
 // }
     </script>
   </head>
-  <body></body>
+  <body>
+    <div id="overlay">
+      <div id="overlay-content">
+        <h1>I Saw It In A Dream</h1>
+        <p>What do you see</p>
+        <p>when you close your eyes</p>
+        <p>and your retinas still buzz</p>
+        <p>from computer screen light?</p>
+        <h2 id="timeLeft"></h2>
+        <h2><a href="https://artblocks.io/project/102">artblocks.io</a></h2>
+      </div>
+    </div>
+  </body>
 
   <script src="./index.js"></script>
+  <script>
+
+
+      const fmt = (n) => {
+        const r = Math.floor(n)
+        if (r < 10) return '0' + r
+        else return '' + r
+      }
+      const dropTime = new Date('2021-07-07T16:00:00.000Z').getTime()
+      const setDropTime = () => {
+        const now = Date.now()
+        const diff = Math.max(dropTime - now, 0)
+
+        const d = diff / 86400000
+        const h = (d - Math.floor(d)) * 24
+        const m = (h - Math.floor(h)) * 60
+        const s = (m - Math.floor(m)) * 60
+
+
+        const timeLeft = d && h && m && s
+          ? `${fmt(d)}:${fmt(h)}:${fmt(m)}:${fmt(s)}`
+          : ''
+
+        document.getElementById('timeLeft').innerHTML = timeLeft
+      }
+      setInterval(setDropTime, 1000)
+      setDropTime()
+  </script>
 
 </html>

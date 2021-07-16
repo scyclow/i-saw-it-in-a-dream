@@ -34,7 +34,7 @@ let SCALE,
 
 function setup() {
   const size = min(window.innerWidth, window.innerHeight);
-  __canvas = createCanvas(window.innerWidth, window.innerHeight)
+  createCanvas(size, size)
   SCALE = size / 500
   const bgSeed = hshrnd(0)
   bgType = bgSeed < 0.5 ? "matrix" : bgSeed < 0.9375 ? "stipple" : ""
